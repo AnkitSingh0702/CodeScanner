@@ -10,7 +10,7 @@ import QrCode from "qrcode";
 import { Button } from "@/components/ui/button";
 import { Form, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { BeatLoader } from "react-spinners"; // Import the react-spinner
+import { BeatLoader } from "react-spinners"; 
 
 const formSchema = z.object({
   url: z.string().url(),
@@ -31,8 +31,8 @@ export default function Home() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setLoading(true); // Set loading to true when button is clicked
-    setQrCodeData(null); // Clear the previous QR code if any
+    setLoading(true); 
+    setQrCodeData(null); 
 
     setTimeout(async () => {
       if (values.url) {
@@ -42,18 +42,19 @@ export default function Home() {
         });
         setQrCodeData(qrCodeDataUrl);
       }
-      setLoading(false); // Set loading to false once QR code is generated
-    }, 1000); // Simulate a delay of 1 second before showing QR code
+      setLoading(false); 
+    }, 1000); 
   };
 
   return (
     <main className="relative flex justify-center items-center flex-col p-6 sm:p-12 lg:p-24 z-10">
-      <Back /> {/* This will render your background */}
+      <Back /> 
+
       <p className="text-3xl sm:text-5xl font-extrabold text-slate-300 z-20">
         CodeScan
       </p>
 
-      {/* Adjust the container height dynamically */}
+     
       <div
         className={`mt-6 w-full max-w-xl bg-zinc-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 p-4 transition-all duration-300 custom-border ${
           qrCodeData ? "h-auto" : "h-[14rem]"
@@ -107,6 +108,7 @@ export default function Home() {
         </Form>
 
         {qrCodeData && (
+          //QRcode
           <div className="flex flex-col items-center mt-6">
             <Image
               ref={imageRef}
